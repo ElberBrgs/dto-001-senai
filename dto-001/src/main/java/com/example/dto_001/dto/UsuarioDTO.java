@@ -4,6 +4,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class UsuarioDTO {
+    @NotBlank(message = "Nome é obrigatório")
+    private String nome;
+
     @NotBlank(message = "E-mail é obrigatório")
     @Email(message = "E-mail inválido")
     private String email;
@@ -14,9 +17,18 @@ public class UsuarioDTO {
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(String email, String senha) {
+    public UsuarioDTO(String nome, String email, String senha) {
+        this.nome = nome;
         this.email = email;
         this.senha = senha;
+    }
+
+    public @NotBlank(message = "Nome é obrigatório") String getNome() {
+        return nome;
+    }
+
+    public void setNome(@NotBlank(message = "Nome é obrigatório") String nome) {
+        this.nome = nome;
     }
 
     public @NotBlank(message = "E-mail é obrigatório") @Email(message = "E-mail inválido") String getEmail() {
